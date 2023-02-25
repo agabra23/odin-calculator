@@ -36,11 +36,18 @@ function operate(num1, num2, operator) {
 }
 
 
-// Notes: String together operations
-// Notes: Early '=' click shouldnt do anything
-// Notes: Should be able to switch active operator without affecting numbers
-// start with num1 = undefined, num2 = undefined
-// Concat digit with result text box each digit click
-// save first and second num (same as first) when operator is clicked
-// next digit to be clicked is concat to result text box
-// equals button click will save text box num as second num and then oeprate with both nums and selected operator
+/* 
+Notes: String together operations
+Notes: Early '=' click shouldnt do anything
+Notes: Should be able to switch active operator without affecting numbers
+Notes: Round decimals to 2 decimal places
+Notes: 'Clear' button completely clears data and resets the calculator
+Notes: Display 'dumbass' when dividing by 0
+Notes: Add keyboard Support
+Notes: add decimal support
+start with num1 = undefined, num2 = undefined
+Concat digit with result text box each digit click
+save first and second num (same as first) when operator is clicked
+next digit to be clicked is concat to result text box
+equals button click will save text box num as second num and then oeprate with both nums and selected operator
+*/
