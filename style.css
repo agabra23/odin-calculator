@@ -1,0 +1,45 @@
+:root {
+    --primary-dark: #333;
+    --primary-light: #d7d7d7;
+    --secondary-light: #fefefe;
+}
+
+* {
+    /* border: 2px solid red; */
+    
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-light);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 10px 15px;
+    color: var(--primary-dark);
+}
