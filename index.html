@@ -18,39 +18,41 @@
     <header>
         <h1>Calculator.</h1>
         <div class="socials">
-            <span class="fa-brands fa-linkedin"></span>
-            <span class="fa-brands fa-github"></span>
-            <span class="fa-brands fa-instagram"></span>
+            <span style="font-size: 20px;" class="fa-brands fa-linkedin"></span>
+            <span style="font-size: 20px;" class="fa-brands fa-github"></span>
+            <span style="font-size: 20px;" class="fa-brands fa-instagram"></span>
         </div>
     </header>
     <main>
         <div id="calcContainer">
             <div id="displayContainer">
-                <div id="display">|</div>
+                <div id="display">
+                    <h3 id="displayText">|</h3>
+                </div>
             </div>
             <div id="buttons">
                 <div id="settings-digits-container">
-                    <div id="settingsRow">
+                    <div id="settingsRow" class="row">
                         <button id="clear" class="button">AC</button>
                         <button id="+/-" class="button">+/-</button>
                         <button id="%" class="button">%</button>
                     </div>
-                    <div id="digitRow789">
+                    <div id="digitRow789" class="row">
                         <button id="7" class="digit button">7</button>
                         <button id="8" class="digit button">8</button>
                         <button id="9" class="digit button">9</button>
                     </div>
-                    <div id="digitRow456">
+                    <div id="digitRow456" class="row">
                         <button id="4" class="digit button">4</button>
                         <button id="5" class="digit button">5</button>
                         <button id="6" class="digit button">6</button>
                     </div>
-                    <div id="digit123">
+                    <div id="digit123" class="row">
                         <button id="1" class="digit button">1</button>
                         <button id="2" class="digit button">2</button>
                         <button id="3" class="digit button">3</button>
                     </div>
-                    <div id="digitRow0">
+                    <div id="digitRow0" class="row">
                         <button id="0" class="digit button">0</button>
                     </div>
                 </div>
@@ -59,11 +61,15 @@
                     <button id="*Btn" class="button">*</button>
                     <button id="-Btn" class="button">-</button>
                     <button id="+Btn" class="button">+</button>
+                    <button id="decimalBtn" class="button">.</button>
                 </div>
             </div>
             
         </div>
     </main>
+    <footer>
+        
+    </footer>
 </body>
 <script src="./app.js"></script>
 </html>
