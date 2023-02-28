@@ -1,6 +1,6 @@
 :root {
     --primary-dark: #333;
-    --secondary-dark: #aeaeae;
+    --secondary-dark: #bdbdbd;
     --primary-light: #d7d7d7;
     --secondary-light: #fefefe;
 }
@@ -62,7 +62,8 @@ main {
     flex: 1;
     text-align: right;
     font-size: 68px;
-    font-weight: 300;
+    font-weight: 500;
+    color: var(--primary-dark);
 }
 
 #buttons {
