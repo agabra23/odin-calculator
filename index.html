@@ -24,41 +24,44 @@
         </div>
     </header>
     <main>
-        <div id="calcContainer" class="flex-container">
-            <div id="displayContainer" class="flex-container">
+        <div id="calcContainer">
+            <div id="displayContainer">
                 <div id="display">|</div>
             </div>
-            <div id="settings-digits-container">
-                <div id="settingsRow" class="flex-container">
-                    <button id="clear">AC</button>
-                    <button id="+/-">+/-</button>
-                    <button id="%">%</button>
+            <div id="buttons">
+                <div id="settings-digits-container">
+                    <div id="settingsRow">
+                        <button id="clear" class="button">AC</button>
+                        <button id="+/-" class="button">+/-</button>
+                        <button id="%" class="button">%</button>
+                    </div>
+                    <div id="digitRow789">
+                        <button id="7" class="digit button">7</button>
+                        <button id="8" class="digit button">8</button>
+                        <button id="9" class="digit button">9</button>
+                    </div>
+                    <div id="digitRow456">
+                        <button id="4" class="digit button">4</button>
+                        <button id="5" class="digit button">5</button>
+                        <button id="6" class="digit button">6</button>
+                    </div>
+                    <div id="digit123">
+                        <button id="1" class="digit button">1</button>
+                        <button id="2" class="digit button">2</button>
+                        <button id="3" class="digit button">3</button>
+                    </div>
+                    <div id="digitRow0">
+                        <button id="0" class="digit button">0</button>
+                    </div>
                 </div>
-                <div id="digitRow789" class="flex-container">
-                    <button id="7">7</button>
-                    <button id="8">8</button>
-                    <button id="9">9</button>
-                </div>
-                <div id="digitRow456" class="flex-container">
-                    <button id="4">4</button>
-                    <button id="5">5</button>
-                    <button id="6">6</button>
-                </div>
-                <div id="digit123" class="flex-container">
-                    <button id="1">1</button>
-                    <button id="2">2</button>
-                    <button id="3">3</button>
-                </div>
-                <div id="digitRow0" class="flex-container">
-                    <button id="0">0</button>
+                <div id="operatorBtns">
+                    <button id="/Btn" class="button">/</button>
+                    <button id="*Btn" class="button">*</button>
+                    <button id="-Btn" class="button">-</button>
+                    <button id="+Btn" class="button">+</button>
                 </div>
             </div>
-            <div id="operatorBtns" class="flex-container">
-                <button id="/Btn">/</button>
-                <button id="*Btn">*</button>
-                <button id="-Btn">-</button>
-                <button id="+Btn">+</button>
-            </div>
+            
         </div>
     </main>
     <footer></footer>

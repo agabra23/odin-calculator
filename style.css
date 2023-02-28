@@ -5,20 +5,19 @@
 }
 
 * {
-    /* border: 2px solid red; */
-    
+    border: 1px solid red;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     height: 100%;
-    padding: 8px;
 }
 
 body {
-    width: 100%;
-    height: 100%;
     background-color: var(--primary-light);
-    margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -29,7 +28,6 @@ header {
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 6px;
     text-transform: uppercase;
@@ -45,3 +43,4 @@ h1 {
     color: var(--primary-dark);
     margin-right: 15px;
 }
+
