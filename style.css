@@ -11,13 +11,47 @@
     padding: 0;
 }
 
-html {
+html, body {
     height: 100%;
+    overflow: auto;
 }
 
 body {
+    height: inherit;
     background-color: var(--primary-light);
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#calcContainer {
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons {
+    flex: 1;
+    display: flex;
+}
+
+#settings-digits-container {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+#operatorBtns {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -43,4 +77,3 @@ h1 {
     color: var(--primary-dark);
     margin-right: 15px;
 }
-
