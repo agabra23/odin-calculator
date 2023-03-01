@@ -1,5 +1,6 @@
 const DEFAULT_NUM = undefined;
 const DEFAULT_OPERATOR = '';
+const funnyPhrase = 'wtf lol';
 
 let num1, num2 = DEFAULT_NUM;
 let currentOperator = DEFAULT_OPERATOR;
@@ -55,7 +56,8 @@ digits.forEach((digit) => {
             display.innerHTML = '';
             needsReset = false;
         }
-        concatDisplay(digit.textContent);
+        if (display.innerHTML != funnyPhrase || display.innerHTML != 'ERROR')
+            concatDisplay(digit.textContent);
     });
 });
 
@@ -135,9 +137,15 @@ function compute() {
     if (num1 != undefined) {
         setNum2(parseFloat(display.innerHTML));
         const result = operate(num1, num2, currentOperator);
-        console.log(result);
-        if (result != undefined)
-            display.innerHTML = `${result}`;
+        if (result != undefined)    
+            if (result == funnyPhrase) {
+                display.innerHTML = `${result}`;
+            } else if (isNaN) 
+                display.innerHTML = `ERROR`;
+            else {
+                display.innerHTML = `${result.toFixed(3)}`;
+            }
+
     }
 }
 
