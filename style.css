@@ -1,8 +1,8 @@
 :root {
-    --primary-dark: #333;
-    --secondary-dark: #bdbdbd;
-    --primary-light: #d7d7d7;
-    --secondary-light: #fefefe;
+    --primary-dark: rgb(51, 51, 55);
+    --secondary-dark: rgb(189, 189, 195);
+    --primary-light: rgb(215, 215, 220);
+    --secondary-light: rgb(254, 254, 260);
 }
 
 * {
@@ -96,10 +96,39 @@ main {
     color: var(--primary-dark);
     font-size: 24px;
     font-weight: 500;
+    position: relative;
+    z-index: 1;
 }
 
-.active {
-    background-color: red;
+.button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 5, .07);
+
+    z-index: -1;
+    transition: transform 200ms ease;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.button:hover::after {
+    transform: scaleX(1);
+}
+
+.button.active::after {
+    transform: scaleX(0);
+}
+
+.button.button.active:hover::after {
+    transform: scaleX(0);
+}
+
+.button.active {
+    background: rgba(0, 0, 0, .2);
 }
 
 #operatorBtns {
