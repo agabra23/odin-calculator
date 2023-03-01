@@ -3,7 +3,7 @@ const DEFAULT_OPERATOR = '';
 
 let num1, num2 = DEFAULT_NUM;
 let currentOperator = DEFAULT_OPERATOR;
-let activeOperator = false;
+let needsReset = false;
 
 function setCurrentOperator(newOperator) {
     currentOperator = newOperator;
@@ -51,18 +51,34 @@ btnEquals.onclick = () => equals();
 
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
+        if (needsReset) {
+            display.innerHTML = '';
+            needsReset = false;
+        }
         concatDisplay(digit.textContent);
     });
 });
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        activateOperator(operator);
-        setCurrentOperator(operator.textContent);
-        if (display.innerHTML != '') {
-            setNum1(parseInt(display.innerHTML));
+        
+        if (num1 != DEFAULT_NUM && display.innerHTML != '') {
+            compute();
+            activateOperator(operator);
+            setCurrentOperator(operator.textContent);
+            if (display.innerHTML != '') {
+                setNum1(parseFloat(display.innerHTML));
+            }
+            needsReset = true
+        } else {
+            activateOperator(operator);
+            setCurrentOperator(operator.textContent);
+            if (display.innerHTML != '') {
+                setNum1(parseFloat(display.innerHTML));
+            }
+            display.innerHTML = '';
         }
-        display.innerHTML = '';
+        
         console.log(num1);
         console.log(currentOperator);
     });
@@ -85,6 +101,8 @@ function multiply() {
 
 
 function divide() {
+    if (arguments[1] === 0)
+        return 'wtf lol'
     return arguments[0] / arguments[1];
 }
 
@@ -107,25 +125,34 @@ function operate(num1, num2, operator) {
 }
 
 function equals() {
+    compute();
+    if (!(isNaN(parseFloat(display.innerHTML))))
+        setNum1(parseFloat(display.innerHTML));
+    resetOperators();
+}
+
+function compute() {
     if (num1 != undefined) {
-        setNum2(parseInt(display.innerHTML));
+        setNum2(parseFloat(display.innerHTML));
         const result = operate(num1, num2, currentOperator);
         console.log(result);
-        display.innerHTML = `${result}`;
-        resetOperators();
+        if (result != undefined)
+            display.innerHTML = `${result}`;
     }
 }
 
 function inverse() {
-    let num = parseInt(display.innerHTML);
+    let num = parseFloat(display.innerHTML);
     num *= -1
     display.innerHTML = `${num}`;
 }
 
 function init() {
-    display.textContent = '';
-    num1, num2 = DEFAULT_NUM;
-    currentOperator = DEFAULT_OPERATOR;
+    display.textContent = '0';
+    needsReset = true;
+    setNum1(DEFAULT_NUM);
+    setNum2(DEFAULT_NUM);
+    setCurrentOperator(DEFAULT_OPERATOR);
 }
 
 function reset() {
@@ -165,4 +192,8 @@ Concat digit with result text box each digit click
 save first and second num (same as first) when operator is clicked
 next digit to be clicked is concat to result text box
 equals button click will save text box num as second num and then oeprate with both nums and selected operator
+
+
+
+if num1 is not undefined AND display is not empty, compute result and store as num 1 erase num 2
 */
