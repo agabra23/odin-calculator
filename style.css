@@ -13,6 +13,15 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
 html, body {
     height: 100%;
     overflow: auto;
