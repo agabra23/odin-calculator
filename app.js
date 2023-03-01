@@ -8,36 +8,52 @@ function setCurrentOperator(newOperator) {
     currentOperator = newOperator;
 }
 
-const btn1 = document.querySelector('#1');
-const btn2 = document.querySelector('#2');
-const btn3 = document.querySelector('#3');
-const btn4 = document.querySelector('#4');
-const btn5 = document.querySelector('#5');
-const btn6 = document.querySelector('#6');
-const btn7 = document.querySelector('#7');
-const btn8 = document.querySelector('#8');
-const btn9 = document.querySelector('#9');
-const btn0 = document.querySelector('#0');
+const btn1 = document.getElementById('1');
+const btn2 = document.getElementById('2');
+const btn3 = document.getElementById('3');
+const btn4 = document.getElementById('4');
+const btn5 = document.getElementById('5');
+const btn6 = document.getElementById('6');
+const btn7 = document.getElementById('7');
+const btn8 = document.getElementById('8');
+const btn9 = document.getElementById('9');
+const btn0 = document.getElementById('0');
 
 const digits = document.querySelectorAll('.digit')
+console.table(digits);
 
-const btnClear = document.querySelector('#clear');
-const btnInverse = document.querySelector('#inverse');
-const btnPercent = document.querySelector('#%');
+const btnClear = document.getElementById('clear');
+const btnInverse = document.getElementById('inverse');
+const btnPercent = document.getElementById('%');
 
-const btnPlus = document.querySelector('#+');
-const btnMinus = document.querySelector('#-');
-const btnMultiply = document.querySelector('#*');
-const btnDivide = document.querySelector('#/');
-const btnDecimal = document.querySelector('#decimalBtn');
+const btnPlus = document.getElementById('+');
+const btnMinus = document.getElementById('-');
+const btnMultiply = document.getElementById('*');
+const btnDivide = document.getElementById('/');
+const btnEquals = document.getElementById('equalsBtn');
 
 const operators = document.querySelectorAll('.operator')
-
 const display = document.querySelector('#displayText')
 
 
+btnClear.onclick = () => reset();
+btnInverse.onclick = () => inverse();
 
+digits.forEach((digit) => {
+    digit.addEventListener('click', (e) => {
+        concatDisplay(digit.textContent);
+    });
+});
 
+function digitClick(digit) {
+    concatDisplay(digit);
+}
+
+function inverse() {
+    let num = parseInt(display.innerHTML);
+    num *= -1
+    display.innerHTML = `${num}`;
+}
 
 function add() {
     return arguments[0] + arguments[1];
@@ -84,6 +100,7 @@ function init() {
 
 function reset() {
     init();
+    activateButton(DEFAULT_OPERATOR);
 }
 
 function activateButton(newOperator) {
@@ -109,7 +126,7 @@ function activateButton(newOperator) {
 }
 
 function concatDisplay(digit) {
-    display.textContent += digit;
+    display.innerHTML = display.innerHTML.concat('', digit);
 }
 
 Window.onload = init();
