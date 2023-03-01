@@ -140,10 +140,12 @@ function compute() {
         if (result != undefined)    
             if (result == funnyPhrase) {
                 display.innerHTML = `${result}`;
-            } else if (isNaN) 
+            } else if (isNaN(result)) {
                 display.innerHTML = `ERROR`;
-            else {
+            } else if (result % Math.round(result) != 0) {
                 display.innerHTML = `${result.toFixed(3)}`;
+            } else {
+                display.innerHTML = `${result}`;
             }
 
     }
