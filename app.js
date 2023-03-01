@@ -1,11 +1,20 @@
 const DEFAULT_NUM = undefined;
-const DEFAULT_OPERATOR = undefined;
+const DEFAULT_OPERATOR = '';
 
 let num1, num2 = DEFAULT_NUM;
 let currentOperator = DEFAULT_OPERATOR;
+let activeOperator = false;
 
 function setCurrentOperator(newOperator) {
     currentOperator = newOperator;
+}
+
+function setNum1(newNum) {
+    num1 = newNum;
+}
+
+function setNum2(newNum) {
+    num2 = newNum;
 }
 
 const btn1 = document.getElementById('1');
@@ -24,7 +33,7 @@ console.table(digits);
 
 const btnClear = document.getElementById('clear');
 const btnInverse = document.getElementById('inverse');
-const btnPercent = document.getElementById('%');
+const btnDecimal = document.getElementById('.');
 
 const btnPlus = document.getElementById('+');
 const btnMinus = document.getElementById('-');
@@ -38,22 +47,27 @@ const display = document.querySelector('#displayText')
 
 btnClear.onclick = () => reset();
 btnInverse.onclick = () => inverse();
+btnEquals.onclick = () => equals();
 
 digits.forEach((digit) => {
-    digit.addEventListener('click', (e) => {
+    digit.addEventListener('click', () => {
         concatDisplay(digit.textContent);
     });
 });
 
-function digitClick(digit) {
-    concatDisplay(digit);
-}
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        activateOperator(operator);
+        setCurrentOperator(operator.textContent);
+        if (display.innerHTML != '') {
+            setNum1(parseInt(display.innerHTML));
+        }
+        display.innerHTML = '';
+        console.log(num1);
+        console.log(currentOperator);
+    });
+})
 
-function inverse() {
-    let num = parseInt(display.innerHTML);
-    num *= -1
-    display.innerHTML = `${num}`;
-}
 
 function add() {
     return arguments[0] + arguments[1];
@@ -92,6 +106,22 @@ function operate(num1, num2, operator) {
     }
 }
 
+function equals() {
+    if (num1 != undefined) {
+        setNum2(parseInt(display.innerHTML));
+        const result = operate(num1, num2, currentOperator);
+        console.log(result);
+        display.innerHTML = `${result}`;
+        resetOperators();
+    }
+}
+
+function inverse() {
+    let num = parseInt(display.innerHTML);
+    num *= -1
+    display.innerHTML = `${num}`;
+}
+
 function init() {
     display.textContent = '';
     num1, num2 = DEFAULT_NUM;
@@ -100,29 +130,19 @@ function init() {
 
 function reset() {
     init();
-    activateButton(DEFAULT_OPERATOR);
+    resetOperators();
 }
 
-function activateButton(newOperator) {
-    if (currentOperator === '+') {
-        btnPlus.classList.remove('active');
-    } else if (currentMode === '-') {
-        btnMinus.classList.remove('active');
-    } else if (currentMode === '*') {
-        btnMultiply.classList.remove('active');
-    } else if (currentMode === '/') {
-        btnDivide.classList.remove('active');
-    }
+function activateOperator(operatorBtn) {
+    resetOperators();
+    operatorBtn.classList.add('active');
+}
 
-    if (newOperator === '+') {
-        btnPlus.classList.add('active');
-    } else if (newMode === '-') {
-        btnMinus.classList.add('active');
-    } else if (newMode === '*') {
-        btnMultiply.classList.add('active');
-    }else if (newMode === '/') {
-        btnDivide.classList.add('active');
-    }
+function resetOperators() {
+    operators.forEach((operator) => {
+        operator.classList.remove('active');
+    });
+    setCurrentOperator(DEFAULT_OPERATOR);
 }
 
 function concatDisplay(digit) {

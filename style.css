@@ -99,7 +99,7 @@ main {
 }
 
 .active {
-    color: red;
+    background-color: red;
 }
 
 #operatorBtns {
